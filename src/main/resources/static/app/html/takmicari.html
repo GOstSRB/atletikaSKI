@@ -1,0 +1,71 @@
+<div ng-controller="takmicariCtrl">
+	<h1>Takmicari</h1>
+							
+	
+		<form>
+		<div align="right">
+				<label  >sakri pretragu
+    					<input  type="checkbox" ng-model="model.checkboxValue" ng-click="pretraga = !pretraga">
+  				</label><br/>
+  		</div>
+				
+	<div ng-hide="pretraga">
+	
+			<div class="form-group">
+				<label for="skakaonica">Skakaonica</label>
+				<select id="skakaonica" class="form-control" ng-model="searchParams.skakaonicaId">
+					<option ng-repeat="skakaonica in skakaonice" value="{{skakaonica.id}}">{{skakaonica.naziv}}</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="imeIPrezime">Ime i Prezime</label>
+				<input id="imeIPrezime" class="form-control" ng-model="searchParams.imeIPrezime"/>
+			</div>
+			
+			<div class="form-group">
+				<label for="drzava">Drzava</label>
+				<input id="drzava" class="form-control" ng-model="searchParams.drzava"/>
+			</div>
+							
+			<button class="btn btn-primary" ng-click="doSearch()">Pretraži</button>
+	</div>		
+			
+		</form>
+		
+		
+		<div class="btn-group float-right">
+			<button ng-disabled="pageNum == 0" ng-click="changePage(-1)" class="btn btn-info">Nazad</button>
+			<button ng-disabled="pageNum >= totalPages - 1" ng-click="changePage(1)" class="btn btn-info">Napred</button>
+		</div>
+		
+		<br>
+	
+		<table class="table table-bordered table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<th>Ime i prezime</th>
+					<th>Drzava</th>
+					<th>g. rodjenja</th>
+					<th>Visina</th>
+					<th>Skakaonica</th>
+					<th>Akcije</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="takmicar in takmicari">
+					<td>{{takmicar.imeIPrezime}}</td>
+					<td>{{takmicar.drzava}}</td>
+					<td>{{takmicar.godinaRodjenja}}</td>
+					<td>{{takmicar.visina}}</td>
+					<td>{{takmicar.skakaonicaNaziv}}</td>
+					<td>
+				
+						<button class="btn btn-warning" ng-click="goToEdit(takmicar.id)">Izmeni</button>
+						<button class="btn btn-danger" ng-click="doDelete(takmicar.id)">Obriši</button>
+						<button class="btn btn-primary" ng-click="goToSkok(takmicar.id)">SKOK</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+</div>

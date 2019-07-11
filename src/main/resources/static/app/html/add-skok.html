@@ -1,0 +1,40 @@
+<div ng-controller="addSkokCtrl">
+	<h1>dodaj skok</h1>
+	
+	
+	<form>
+
+			<div class="form-group">
+				<label for="imeIPrezime">Ime i Prezime</label>
+				<input id="imeIPrezime" class="form-control" ng-model="newTakmicar.imeIPrezime"/>
+			</div>
+			<div class="form-group">
+				<label for="drzava">Drzava</label>
+				<input id="drzava" class="form-control" ng-model="newTakmicar.drzava"/>
+			</div>
+			<div class="form-group">
+				<label for="visina">Visina</label>
+				<input id="visina" class="form-control" ng-model="newTakmicar.visina"/>
+			</div>
+			<div class="form-group">
+				<label for="godinaRodjenja">Godina rodjenja</label>
+				<input id="godinaRodjenja" class="form-control" ng-model="newTakmicar.godinaRodjenja"/>
+			</div>
+			<div class="form-group">
+				<label for="email">e-mail</label>
+				<input id="email" class="form-control" ng-model="newTakmicar.email"/>
+			</div>
+		
+			<div class="form-group">
+				<label for="skakaonica">Skakaonica</label>
+				<select id="skakaonica" class="form-control" ng-model="newTakmicar.skakaonicaId">
+					<option ng-repeat="skakaonica in skakaonice" value="{{skakaonica.id}}">{{skakaonica.naziv}}</option>
+				</select>
+			</div>
+							
+			<button class="btn btn-primary" ng-click="goToAdd()">Dodaj</button>
+			
+		</form>
+		
+	
+</div>
